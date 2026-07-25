@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SSS777 — Street Style Store</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+
+  <header>
+    <div class="header__logo">
+      <span class="logo__sss">SSS</span><span class="logo__777">777</span>
+      <p class="logo__tagline">Street Style Store</p>
+    </div>
+    <div class="header__search">
+      <form class="search-form" role="search">
+        <input type="search" placeholder="Buscar productos..." aria-label="Buscar">
+        <button type="submit"><i class="fas fa-search"></i></button>
+      </form>
+    </div>
+    <div class="header__icons">
+      <a href="#" aria-label="Mi cuenta"><i class="fas fa-user"></i></a>
+      <a href="#" aria-label="Favoritos"><i class="fas fa-heart"></i></a>
+      <a href="#" class="cart-icon" id="btn-carrito" aria-label="Carrito">
+        <i class="fas fa-shopping-bag"></i>
+        <span class="cart-count" id="cart-count">0</span>
+      </a>
+    </div>
+  </header>
+
+  
+  <nav>
+    <button class="nav__toggle" aria-label="Abrir menú">
+      <i class="fas fa-bars"></i>
+    </button>
+    <ul class="nav__links">
+      <li><a href="#inicio" class="nav-link active" data-view="inicio">Inicio</a></li>
+      <li><a href="#nosotros" class="nav-link" data-view="nosotros">Nosotros</a></li>
+      <li><a href="#alta" class="nav-link" data-view="alta">Agregar Producto</a></li>
+      <li><a href="#contacto" class="nav-link" data-view="contacto">Contacto</a></li>
+    </ul>
+  </nav>
+
+
+
+ 
+  <section class="view" id="view-inicio">
+    <div class="hero">
+      <div class="hero__content">
+        <h1>90s Never<br>Died.</h1>
+        <p>Ropa oversize con actitud. Estilo old school para los de ahora.</p>
+        <a href="#productos" class="btn btn--primary">Ver colección</a>
+      </div>
+    </div>
+    <section class="productos" id="productos">
+      <h2 class="section__title">Nueva colección</h2>
+    
+      <div class="productos__grid" id="productos-grid">
+        <p class="loading">Cargando productos...</p>
+      </div>
+    </section>
+  </section>
+
+
+  <section class="view" id="view-nosotros" style="display:none">
+    <main class="nosotros">
+      <div class="nosotros__hero">
+        <h1>Somos <span style="color: var(--color-primary)">SSS</span><span style="color: var(--color-secondary)">777</span></h1>
+        <p>Nacimos en los 90s. Vivimos en el presente. Vestimos el futuro.</p>
+      </div>
+      <div class="nosotros__historia">
+        <div class="nosotros__historia-text">
+          <h2>Nuestra historia</h2>
+          <p>Todo empezó en una oficina en Cordoba Capital, con una máquina de coser vieja y una obsesión por el estilo de los 90s.</p>
+          <p>SSS777 nació de la calle, del skate, del hip-hop y de esa energía que solo los 90s supieron generar.</p>
+          <p>Creemos que la ropa es una forma de expresión. Que el oversize no es una tendencia, es una actitud.</p>
+        </div>
+        <img src="img/nosotros.jpg" alt="SSS777 historia" style="width:100%; height:100%; object-fit:cover; border-radius:10px;">
+      </div>
+      <h2 class="section__title" style="margin-top: 80px">Lo que nos <span>mueve</span></h2>
+      <div class="nosotros__grid">
+        <div class="nosotros__card"><i class="fas fa-fire"></i><h3>Pasión</h3><p>Cada prenda la diseñamos con la misma energía del primer día.</p></div>
+        <div class="nosotros__card"><i class="fas fa-leaf"></i><h3>Sustentabilidad</h3><p>Usamos materiales de calidad y procesos responsables.</p></div>
+        <div class="nosotros__card"><i class="fas fa-users"></i><h3>Comunidad</h3><p>Somos más que una marca. Somos una comunidad.</p></div>
+        <div class="nosotros__card"><i class="fas fa-star"></i><h3>Calidad</h3><p>Cada pieza está pensada para durar y para que la uses mil veces.</p></div>
+      </div>
+      <div class="nosotros__numeros">
+        <div class="nosotros__numero"><span class="numero__valor">+5k</span><span class="numero__label">Clientes felices</span></div>
+        <div class="nosotros__numero"><span class="numero__valor">30+</span><span class="numero__label">Productos únicos</span></div>
+        <div class="nosotros__numero"><span class="numero__valor">30</span><span class="numero__label">Años de historia</span></div>
+        <div class="nosotros__numero"><span class="numero__valor">100%</span><span class="numero__label">Hecho en Argentina</span></div>
+      </div>
+      <div class="nosotros__cta">
+        <h2>¿Querés ser parte?</h2>
+        <p>Seguinos en redes o escribinos. Siempre estamos.</p>
+        <div class="nosotros__cta-btns">
+          <a href="#contacto" class="btn btn--primary nav-link" data-view="contacto">Contactanos</a>
+          <a href="#inicio" class="btn btn--outline nav-link" data-view="inicio">Ver colección</a>
+        </div>
+      </div>
+    </main>
+  </section>
+
+  <section class="view" id="view-alta" style="display:none">
+    <main class="form-page">
+      <h1>Agregar <span style="color: var(--color-primary)">Producto</span></h1>
+      <p>Completá los campos para agregar un nuevo producto al catálogo.</p>
+      <form class="form" id="form-alta" novalidate>
+
+        <div class="form__group">
+          <label for="nombre">Nombre del producto <span>*</span></label>
+          <input type="text" id="nombre" name="nombre" placeholder="Ej: Buzo Oversize Gris" required minlength="3" maxlength="80">
+          <p class="form__error" id="error-nombre"></p>
+        </div>
+
+        <div class="form__row">
+          <div class="form__group">
+            <label for="precio">Precio <span>*</span></label>
+            <input type="number" id="precio" name="precio" placeholder="Ej: 24999" required min="1" max="9999999">
+            <p class="form__error" id="error-precio"></p>
+          </div>
+          <div class="form__group">
+            <label for="stock">Stock <span>*</span></label>
+            <input type="number" id="stock" name="stock" placeholder="Ej: 50" required min="0" max="9999">
+            <p class="form__error" id="error-stock"></p>
+          </div>
+        </div>
+
+        <div class="form__row">
+          <div class="form__group">
+            <label for="marca">Marca <span>*</span></label>
+            <input type="text" id="marca" name="marca" placeholder="Ej: SSS777" required minlength="2" maxlength="50">
+            <p class="form__error" id="error-marca"></p>
+          </div>
+          <div class="form__group">
+            <label for="categoria">Categoría <span>*</span></label>
+            <select id="categoria" name="categoria" required>
+              <option value="">Seleccioná una categoría</option>
+              <option value="buzos">Buzos</option>
+              <option value="camperas">Camperas</option>
+              <option value="remeras">Remeras</option>
+              <option value="pantalones">Pantalones</option>
+              <option value="accesorios">Accesorios</option>
+            </select>
+            <p class="form__error" id="error-categoria"></p>
+          </div>
+        </div>
+
+        <div class="form__group">
+          <label for="desc-corta">Descripción corta <span>*</span></label>
+          <input type="text" id="desc-corta" name="desc_corta" placeholder="Ej: Algodón premium. Fit relajado estilo 90s." required minlength="10" maxlength="120">
+          <p class="form__error" id="error-desc-corta"></p>
+        </div>
+
+        <div class="form__group">
+          <label for="desc-larga">Descripción larga <span>*</span></label>
+          <textarea id="desc-larga" name="desc_larga" placeholder="Describí el producto en detalle..." required minlength="30" maxlength="1000" rows="5"></textarea>
+          <p class="form__error" id="error-desc-larga"></p>
+        </div>
+
+        <div class="form__group">
+          <label class="form__check">
+            <input type="checkbox" id="envio-gratis" name="envio_gratis">
+            Envío sin cargo
+          </label>
+        </div>
+
+        <div class="form__row">
+          <div class="form__group">
+            <label for="edad-desde">Edad desde</label>
+            <input type="number" id="edad-desde" name="edad_desde" placeholder="Ej: 15" min="0" max="99">
+            <p class="form__error" id="error-edad-desde"></p>
+          </div>
+          <div class="form__group">
+            <label for="edad-hasta">Edad hasta</label>
+            <input type="number" id="edad-hasta" name="edad_hasta" placeholder="Ej: 35" min="0" max="99">
+            <p class="form__error" id="error-edad-hasta"></p>
+          </div>
+        </div>
+
+        <div class="form__group">
+          <label for="foto">Foto del producto <span>*</span></label>
+          <input type="file" id="foto" name="foto" accept="image/png, image/jpeg, image/webp" required>
+          <p class="form__error" id="error-foto"></p>
+        </div>
+
+        <div class="form__actions">
+          <button type="reset" class="btn btn--outline">Limpiar</button>
+          <button type="submit" class="btn btn--primary">Agregar producto <i class="fas fa-plus"></i></button>
+        </div>
+
+      </form>
+
+  
+      <div class="tabla-container" id="tabla-container">
+        <h2 style="margin-top: 40px">Productos cargados</h2>
+        <table class="tabla" id="tabla-productos">
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Precio</th>
+              <th>Stock</th>
+              <th>Marca</th>
+              <th>Categoría</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="tabla-body"></tbody>
+        </table>
+      </div>
+
+    </main>
+  </section>
+
+
+  <section class="view" id="view-contacto" style="display:none">
+    <main class="form-page">
+      <h1>Contacto</h1>
+      <p>¿Tenés alguna duda? Escribinos y te respondemos a la brevedad.</p>
+      <form class="form" id="form-contacto" novalidate>
+
+        <div class="form__group">
+          <label for="contacto-nombre">Nombre <span>*</span></label>
+          <input type="text" id="contacto-nombre" name="nombre" placeholder="Tu nombre completo" required minlength="2" maxlength="80">
+          <p class="form__error" id="error-contacto-nombre"></p>
+        </div>
+
+        <div class="form__group">
+          <label for="contacto-email">E-mail <span>*</span></label>
+          <input type="email" id="contacto-email" name="email" placeholder="tucorreo@ejemplo.com" required>
+          <p class="form__error" id="error-contacto-email"></p>
+        </div>
+
+        <div class="form__group">
+          <label for="asunto">Asunto</label>
+          <select id="asunto" name="asunto">
+            <option value="">Seleccioná un asunto</option>
+            <option value="compra">Consulta sobre una compra</option>
+            <option value="envio">Envíos y devoluciones</option>
+            <option value="talles">Guía de talles</option>
+            <option value="otro">Otro</option>
+          </select>
+        </div>
+
+        <div class="form__group">
+          <label for="comentarios">Comentarios <span>*</span></label>
+          <textarea id="comentarios" name="comentarios" placeholder="Escribí tu consulta acá..." required minlength="10" maxlength="500" rows="6"></textarea>
+          <p class="form__error" id="error-comentarios"></p>
+        </div>
+
+        <div class="form__actions">
+          <button type="reset" class="btn btn--outline">Limpiar</button>
+          <button type="submit" class="btn btn--primary">Enviar mensaje <i class="fas fa-paper-plane"></i></button>
+        </div>
+
+      </form>
+
+      <div class="contacto__info">
+        <div class="contacto__item"><i class="fas fa-envelope"></i><div><h4>Email</h4><p>contacto@sss777.com</p></div></div>
+        <div class="contacto__item"><i class="fab fa-whatsapp"></i><div><h4>WhatsApp</h4><p>+54 9 351 1234-5678</p></div></div>
+        <div class="contacto__item"><i class="fas fa-clock"></i><div><h4>Horario</h4><p>Lun a Vie, 10 a 18hs</p></div></div>
+      </div>
+    </main>
+  </section>
+
+
+  <div class="modal-overlay" id="modal-overlay" style="display:none">
+    <div class="modal-carrito" id="modal-carrito">
+      <div class="modal-carrito__header">
+        <h2>Tu carrito</h2>
+        <button class="modal-carrito__close" id="btn-cerrar-carrito">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="modal-carrito__body" id="carrito-body">
+        <p class="carrito-vacio">Tu carrito está vacío.</p>
+      </div>
+      <div class="modal-carrito__footer">
+        <div class="carrito-total">
+          Total: <strong id="carrito-total">$0</strong>
+        </div>
+        <button class="btn btn--primary" id="btn-confirmar-pedido">
+          Confirmar pedido <i class="fas fa-check"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  
+  <div class="toast" id="toast"></div>
+
+
+  <footer>
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <div class="footer__logo">
+          <span class="logo__sss">SSS</span><span class="logo__777">777</span>
+        </div>
+        <p>Ropa oversize con actitud. Estilo old school para los de ahora.</p>
+        <div class="footer__social">
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        </div>
+      </div>
+      <div class="footer__links">
+        <h4>Navegación</h4>
+        <ul>
+          <li><a href="#inicio" class="nav-link" data-view="inicio">Inicio</a></li>
+          <li><a href="#nosotros" class="nav-link" data-view="nosotros">Nosotros</a></li>
+          <li><a href="#alta" class="nav-link" data-view="alta">Agregar Producto</a></li>
+          <li><a href="#contacto" class="nav-link" data-view="contacto">Contacto</a></li>
+        </ul>
+      </div>
+      <div class="footer__links">
+        <h4>Ayuda</h4>
+        <ul>
+          <li><a href="#">Envíos y devoluciones</a></li>
+          <li><a href="#">Guía de talles</a></li>
+          <li><a href="#">Preguntas frecuentes</a></li>
+          <li><a href="#">Términos y condiciones</a></li>
+        </ul>
+      </div>
+      <div class="footer__contact">
+        <h4>Contacto</h4>
+        <p><i class="fas fa-envelope"></i> contacto@sss777.com</p>
+        <p><i class="fab fa-whatsapp"></i> +54 9 351 1234-5678</p>
+        <p><i class="fas fa-map-marker-alt"></i> Cordoba Capital, Argentina</p>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>&copy; 2025 SSS777 — Street Style Store. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="js/proyecto-integradorv2.js"></script>
+</body>
+</html>
