@@ -4,20 +4,18 @@ const API_URL = "https://6a637495b30b52361e1a51bf.mockapi.io/sss777";
 // ── Estado del carrito ──
 let carrito = [];
 
+// ══════════════════════════════════════════
 // NAVEGACIÓN SPA
-
+// ══════════════════════════════════════════
 
 function mostrarVista(nombreVista) {
-  // Oculta todas las vistas
   document.querySelectorAll(".view").forEach(function(view) {
     view.style.display = "none";
   });
 
-  // Muestra solo la vista pedida
   const vista = document.getElementById("view-" + nombreVista);
   if (vista) vista.style.display = "block";
 
-  // Marca el link activo en el menú
   document.querySelectorAll(".nav-link").forEach(function(link) {
     link.classList.remove("active");
     if (link.dataset.view === nombreVista) {
@@ -25,17 +23,12 @@ function mostrarVista(nombreVista) {
     }
   });
 
-  // Cambia la URL sin recargar la página
   history.pushState({ vista: nombreVista }, "", "#" + nombreVista);
 
-  // Si es la vista de inicio carga los productos
   if (nombreVista === "inicio") cargarProductos();
-
-  // Si es la vista de alta carga la tabla
   if (nombreVista === "alta") cargarTablaProductos();
 }
 
-// Escucha los clicks en todos los links de navegación
 document.querySelectorAll(".nav-link").forEach(function(link) {
   link.addEventListener("click", function(e) {
     e.preventDefault();
@@ -43,28 +36,25 @@ document.querySelectorAll(".nav-link").forEach(function(link) {
   });
 });
 
-// Maneja el botón atrás/adelante del navegador
 window.addEventListener("popstate", function(e) {
   if (e.state && e.state.vista) {
     mostrarVista(e.state.vista);
   }
 });
 
-// Al cargar la página muestra la vista según el hash de la URL
 window.addEventListener("load", function() {
   const hash = window.location.hash.replace("#", "") || "inicio";
   mostrarVista(hash);
 });
 
-// Menú hamburguesa para mobile
 document.querySelector(".nav__toggle").addEventListener("click", function() {
   document.querySelector(".nav__links").classList.toggle("open");
 });
 
 
-
-// TOAST (mensaje no invasivo)
-
+// ══════════════════════════════════════════
+// TOAST
+// ══════════════════════════════════════════
 
 function mostrarToast(mensaje, tipo = "ok") {
   const toast = document.getElementById("toast");
@@ -77,16 +67,16 @@ function mostrarToast(mensaje, tipo = "ok") {
 }
 
 
-
+// ══════════════════════════════════════════
 // HOME — PRODUCTOS
-
+// ══════════════════════════════════════════
 
 async function cargarProductos() {
   const grid = document.getElementById("productos-grid");
   grid.innerHTML = "<p class='loading'>Cargando productos...</p>";
 
   try {
-    const response = await fetch(API_URL + "/productos");
+    const response = await fetch(API_URL + "/Productos");
     const productos = await response.json();
 
     if (productos.length === 0) {
@@ -99,13 +89,12 @@ async function cargarProductos() {
       grid.innerHTML += crearCardHTML(producto);
     });
 
-    // Agrega eventos a los botones de cada card
     document.querySelectorAll(".btn-agregar-carrito").forEach(function(btn) {
       btn.addEventListener("click", function() {
-        const id        = this.dataset.id;
-        const nombre    = this.dataset.nombre;
-        const precio    = Number(this.dataset.precio);
-        const foto      = this.dataset.foto;
+        const id     = this.dataset.id;
+        const nombre = this.dataset.nombre;
+        const precio = Number(this.dataset.precio);
+        const foto   = this.dataset.foto;
         agregarAlCarrito({ id, nombre, precio, foto });
       });
     });
@@ -142,9 +131,9 @@ function crearCardHTML(producto) {
 }
 
 
-
+// ══════════════════════════════════════════
 // CARRITO
-
+// ══════════════════════════════════════════
 
 function agregarAlCarrito(producto) {
   const existente = carrito.find(function(item) {
@@ -209,14 +198,12 @@ function renderizarCarrito() {
 
   document.getElementById("carrito-total").textContent = "$" + total.toLocaleString("es-AR");
 
-  // Eventos de sumar/restar
   document.querySelectorAll(".btn-cantidad").forEach(function(btn) {
     btn.addEventListener("click", function() {
       cambiarCantidad(this.dataset.id, this.dataset.accion);
     });
   });
 
-  // Eventos de eliminar
   document.querySelectorAll(".btn-eliminar-item").forEach(function(btn) {
     btn.addEventListener("click", function() {
       eliminarDelCarrito(this.dataset.id);
@@ -249,7 +236,6 @@ function eliminarDelCarrito(id) {
   mostrarToast("Producto eliminado del carrito", "error");
 }
 
-// Abrir y cerrar modal
 document.getElementById("btn-carrito").addEventListener("click", function(e) {
   e.preventDefault();
   abrirCarrito();
@@ -273,7 +259,6 @@ function cerrarCarrito() {
   document.getElementById("modal-overlay").style.display = "none";
 }
 
-// Confirmar pedido
 document.getElementById("btn-confirmar-pedido").addEventListener("click", confirmarPedido);
 
 async function confirmarPedido() {
@@ -293,7 +278,7 @@ async function confirmarPedido() {
   };
 
   try {
-    await fetch(API_URL + "/carrito", {
+    await fetch(API_URL + "/Carrito", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(pedido)
@@ -311,9 +296,9 @@ async function confirmarPedido() {
 }
 
 
-
+// ══════════════════════════════════════════
 // FORMULARIO ALTA — VALIDACIÓN
-
+// ══════════════════════════════════════════
 
 function mostrarError(id, mensaje) {
   document.getElementById(id).textContent = mensaje;
@@ -374,7 +359,6 @@ function validarCampoAlta(campo) {
   return null;
 }
 
-// Validación al perder el foco
 ["nombre", "precio", "stock", "marca", "categoria", "desc-corta", "desc-larga", "foto"].forEach(function(id) {
   const campo = document.getElementById(id);
   if (!campo) return;
@@ -388,7 +372,6 @@ function validarCampoAlta(campo) {
   });
 });
 
-// Envío del formulario de alta
 document.getElementById("form-alta").addEventListener("submit", async function(e) {
   e.preventDefault();
 
@@ -424,7 +407,7 @@ document.getElementById("form-alta").addEventListener("submit", async function(e
   };
 
   try {
-    await fetch(API_URL + "/productos", {
+    await fetch(API_URL + "/Productos", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(producto)
@@ -440,15 +423,16 @@ document.getElementById("form-alta").addEventListener("submit", async function(e
 });
 
 
-// TABLA DE PRODUCTOS EN ALTA
-
+// ══════════════════════════════════════════
+// TABLA DE PRODUCTOS
+// ══════════════════════════════════════════
 
 async function cargarTablaProductos() {
   const tbody = document.getElementById("tabla-body");
   tbody.innerHTML = "<tr><td colspan='6'>Cargando...</td></tr>";
 
   try {
-    const response  = await fetch(API_URL + "/productos");
+    const response  = await fetch(API_URL + "/Productos");
     const productos = await response.json();
 
     if (productos.length === 0) {
@@ -487,7 +471,7 @@ async function cargarTablaProductos() {
 
 async function eliminarProducto(id) {
   try {
-    await fetch(API_URL + "/productos/" + id, { method: "DELETE" });
+    await fetch(API_URL + "/Productos/" + id, { method: "DELETE" });
     mostrarToast("✓ Producto eliminado");
     cargarTablaProductos();
   } catch (error) {
@@ -496,8 +480,9 @@ async function eliminarProducto(id) {
 }
 
 
+// ══════════════════════════════════════════
 // FORMULARIO CONTACTO — VALIDACIÓN
-
+// ══════════════════════════════════════════
 
 function validarCampoContacto(campo) {
   const valor = campo.value.trim();
