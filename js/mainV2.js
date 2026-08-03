@@ -4,9 +4,9 @@ const API_URL = "https://6a637495b30b52361e1a51bf.mockapi.io/sss777";
 // ── Estado del carrito ──
 let carrito = [];
 
-// ══════════════════════════════════════════
+
 // NAVEGACIÓN SPA
-// ══════════════════════════════════════════
+
 
 function mostrarVista(nombreVista) {
   document.querySelectorAll(".view").forEach(function(view) {
@@ -52,9 +52,9 @@ document.querySelector(".nav__toggle").addEventListener("click", function() {
 });
 
 
-// ══════════════════════════════════════════
+
 // TOAST
-// ══════════════════════════════════════════
+
 
 function mostrarToast(mensaje, tipo = "ok") {
   const toast = document.getElementById("toast");
@@ -67,9 +67,9 @@ function mostrarToast(mensaje, tipo = "ok") {
 }
 
 
-// ══════════════════════════════════════════
+
 // HOME — PRODUCTOS
-// ══════════════════════════════════════════
+
 
 async function cargarProductos() {
   const grid = document.getElementById("productos-grid");
@@ -131,9 +131,9 @@ function crearCardHTML(producto) {
 }
 
 
-// ══════════════════════════════════════════
+
 // CARRITO
-// ══════════════════════════════════════════
+
 
 function agregarAlCarrito(producto) {
   const existente = carrito.find(function(item) {
@@ -296,9 +296,9 @@ async function confirmarPedido() {
 }
 
 
-// ══════════════════════════════════════════
+
 // FORMULARIO ALTA — VALIDACIÓN
-// ══════════════════════════════════════════
+
 
 function mostrarError(id, mensaje) {
   document.getElementById(id).textContent = mensaje;
@@ -423,9 +423,9 @@ document.getElementById("form-alta").addEventListener("submit", async function(e
 });
 
 
-// ══════════════════════════════════════════
+
 // TABLA DE PRODUCTOS
-// ══════════════════════════════════════════
+
 
 async function cargarTablaProductos() {
   const tbody = document.getElementById("tabla-body");
@@ -480,9 +480,9 @@ async function eliminarProducto(id) {
 }
 
 
-// ══════════════════════════════════════════
+
 // FORMULARIO CONTACTO — VALIDACIÓN
-// ══════════════════════════════════════════
+
 
 function validarCampoContacto(campo) {
   const valor = campo.value.trim();
