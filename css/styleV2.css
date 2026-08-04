@@ -592,3 +592,8 @@ footer {
   .modal-carrito__footer { flex-direction: column; align-items: stretch; }
   .carrito-item { flex-wrap: wrap; }
 }
+.form__hint {
+  font-size: 0.75rem;
+  color: var(--color-muted);
+  letter-spacing: 0.5px;
+}

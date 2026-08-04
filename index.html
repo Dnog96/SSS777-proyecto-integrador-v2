@@ -12,7 +12,7 @@
 </head>
 <body>
 
-
+  <!-- ── HEADER ────────────────────────────────────── -->
   <header>
     <div class="header__logo">
       <span class="logo__sss">SSS</span><span class="logo__777">777</span>
@@ -34,7 +34,7 @@
     </div>
   </header>
 
-  
+  <!-- ── NAVBAR ────────────────────────────────────── -->
   <nav>
     <button class="nav__toggle" aria-label="Abrir menú">
       <i class="fas fa-bars"></i>
@@ -47,9 +47,9 @@
     </ul>
   </nav>
 
+  <!-- ── VISTAS ────────────────────────────────────── -->
 
-
- 
+  <!-- INICIO -->
   <section class="view" id="view-inicio">
     <div class="hero">
       <div class="hero__content">
@@ -60,14 +60,13 @@
     </div>
     <section class="productos" id="productos">
       <h2 class="section__title">Nueva colección</h2>
-    
       <div class="productos__grid" id="productos-grid">
         <p class="loading">Cargando productos...</p>
       </div>
     </section>
   </section>
 
-
+  <!-- NOSOTROS -->
   <section class="view" id="view-nosotros" style="display:none">
     <main class="nosotros">
       <div class="nosotros__hero">
@@ -107,6 +106,7 @@
     </main>
   </section>
 
+  <!-- ALTA -->
   <section class="view" id="view-alta" style="display:none">
     <main class="form-page">
       <h1>Agregar <span style="color: var(--color-primary)">Producto</span></h1>
@@ -116,6 +116,7 @@
         <div class="form__group">
           <label for="nombre">Nombre del producto <span>*</span></label>
           <input type="text" id="nombre" name="nombre" placeholder="Ej: Buzo Oversize Gris" required minlength="3" maxlength="80">
+          <small class="form__hint">Mínimo 3 caracteres, máximo 80. Solo letras y espacios.</small>
           <p class="form__error" id="error-nombre"></p>
         </div>
 
@@ -123,11 +124,13 @@
           <div class="form__group">
             <label for="precio">Precio <span>*</span></label>
             <input type="number" id="precio" name="precio" placeholder="Ej: 24999" required min="1" max="9999999">
+            <small class="form__hint">Debe ser mayor a 0 y menor a 9.999.999.</small>
             <p class="form__error" id="error-precio"></p>
           </div>
           <div class="form__group">
             <label for="stock">Stock <span>*</span></label>
             <input type="number" id="stock" name="stock" placeholder="Ej: 50" required min="0" max="9999">
+            <small class="form__hint">Entre 0 y 9999 unidades.</small>
             <p class="form__error" id="error-stock"></p>
           </div>
         </div>
@@ -136,6 +139,7 @@
           <div class="form__group">
             <label for="marca">Marca <span>*</span></label>
             <input type="text" id="marca" name="marca" placeholder="Ej: SSS777" required minlength="2" maxlength="50">
+            <small class="form__hint">Mínimo 2 caracteres, máximo 50.</small>
             <p class="form__error" id="error-marca"></p>
           </div>
           <div class="form__group">
@@ -148,6 +152,7 @@
               <option value="pantalones">Pantalones</option>
               <option value="accesorios">Accesorios</option>
             </select>
+            <small class="form__hint">Seleccioná una de las categorías disponibles.</small>
             <p class="form__error" id="error-categoria"></p>
           </div>
         </div>
@@ -155,12 +160,14 @@
         <div class="form__group">
           <label for="desc-corta">Descripción corta <span>*</span></label>
           <input type="text" id="desc-corta" name="desc_corta" placeholder="Ej: Algodón premium. Fit relajado estilo 90s." required minlength="10" maxlength="120">
+          <small class="form__hint">Mínimo 10 caracteres, máximo 120.</small>
           <p class="form__error" id="error-desc-corta"></p>
         </div>
 
         <div class="form__group">
           <label for="desc-larga">Descripción larga <span>*</span></label>
           <textarea id="desc-larga" name="desc_larga" placeholder="Describí el producto en detalle..." required minlength="30" maxlength="1000" rows="5"></textarea>
+          <small class="form__hint">Mínimo 30 caracteres, máximo 1000.</small>
           <p class="form__error" id="error-desc-larga"></p>
         </div>
 
@@ -175,11 +182,13 @@
           <div class="form__group">
             <label for="edad-desde">Edad desde</label>
             <input type="number" id="edad-desde" name="edad_desde" placeholder="Ej: 15" min="0" max="99">
+            <small class="form__hint">Entre 0 y 99 años.</small>
             <p class="form__error" id="error-edad-desde"></p>
           </div>
           <div class="form__group">
             <label for="edad-hasta">Edad hasta</label>
             <input type="number" id="edad-hasta" name="edad_hasta" placeholder="Ej: 35" min="0" max="99">
+            <small class="form__hint">Entre 0 y 99 años.</small>
             <p class="form__error" id="error-edad-hasta"></p>
           </div>
         </div>
@@ -187,6 +196,7 @@
         <div class="form__group">
           <label for="foto">Foto del producto <span>*</span></label>
           <input type="file" id="foto" name="foto" accept="image/png, image/jpeg, image/webp" required>
+          <small class="form__hint">Formatos aceptados: JPG, PNG, WEBP.</small>
           <p class="form__error" id="error-foto"></p>
         </div>
 
@@ -197,7 +207,6 @@
 
       </form>
 
-  
       <div class="tabla-container" id="tabla-container">
         <h2 style="margin-top: 40px">Productos cargados</h2>
         <table class="tabla" id="tabla-productos">
@@ -218,7 +227,7 @@
     </main>
   </section>
 
-
+  <!-- CONTACTO -->
   <section class="view" id="view-contacto" style="display:none">
     <main class="form-page">
       <h1>Contacto</h1>
@@ -228,12 +237,14 @@
         <div class="form__group">
           <label for="contacto-nombre">Nombre <span>*</span></label>
           <input type="text" id="contacto-nombre" name="nombre" placeholder="Tu nombre completo" required minlength="2" maxlength="80">
+          <small class="form__hint">Mínimo 2 caracteres, máximo 80.</small>
           <p class="form__error" id="error-contacto-nombre"></p>
         </div>
 
         <div class="form__group">
           <label for="contacto-email">E-mail <span>*</span></label>
           <input type="email" id="contacto-email" name="email" placeholder="tucorreo@ejemplo.com" required>
+          <small class="form__hint">Formato válido: usuario@dominio.com</small>
           <p class="form__error" id="error-contacto-email"></p>
         </div>
 
@@ -251,6 +262,7 @@
         <div class="form__group">
           <label for="comentarios">Comentarios <span>*</span></label>
           <textarea id="comentarios" name="comentarios" placeholder="Escribí tu consulta acá..." required minlength="10" maxlength="500" rows="6"></textarea>
+          <small class="form__hint">Mínimo 10 caracteres, máximo 500.</small>
           <p class="form__error" id="error-comentarios"></p>
         </div>
 
@@ -269,7 +281,7 @@
     </main>
   </section>
 
-
+  <!-- ── MODAL CARRITO ──────────────────────────────── -->
   <div class="modal-overlay" id="modal-overlay" style="display:none">
     <div class="modal-carrito" id="modal-carrito">
       <div class="modal-carrito__header">
@@ -292,10 +304,39 @@
     </div>
   </div>
 
-  
+  <!-- ── MODAL LOGIN ────────────────────────────────── -->
+  <div class="login-modal" id="login-modal">
+    <div class="login-modal__box">
+      <button class="login-modal__close" id="btn-cerrar-login">
+        <i class="fas fa-times"></i>
+      </button>
+      <h2>Iniciar <span style="color: var(--color-primary)">sesión</span></h2>
+      <p>Ingresá con tu cuenta para continuar.</p>
+      <div class="login-form">
+        <div class="form__group">
+          <label for="login-email">E-mail</label>
+          <input type="email" id="login-email" placeholder="tucorreo@ejemplo.com">
+          <p class="form__error" id="error-login-email"></p>
+        </div>
+        <div class="form__group">
+          <label for="login-password">Contraseña</label>
+          <input type="password" id="login-password" placeholder="Tu contraseña">
+          <p class="form__error" id="error-login-password"></p>
+        </div>
+        <button class="btn btn--primary" id="btn-login" style="width:100%">
+          Ingresar <i class="fas fa-arrow-right"></i>
+        </button>
+      </div>
+      <p class="login-modal__footer">
+        ¿No tenés cuenta? <a id="btn-registro">Registrate</a>
+      </p>
+    </div>
+  </div>
+
+  <!-- ── TOAST ─────────────────────────────────────── -->
   <div class="toast" id="toast"></div>
 
-
+  <!-- ── FOOTER ─────────────────────────────────────── -->
   <footer>
     <div class="footer__grid">
       <div class="footer__brand">

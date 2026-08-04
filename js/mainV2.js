@@ -545,3 +545,74 @@ document.getElementById("form-contacto").addEventListener("submit", function(e) 
   document.getElementById("form-contacto").reset();
   mostrarToast("✓ Mensaje enviado con éxito");
 });
+// ══════════════════════════════════════════
+// MODAL LOGIN
+// ══════════════════════════════════════════
+
+const loginModal = document.getElementById("login-modal");
+
+// Abrir al hacer clic en el ícono de usuario
+document.querySelector(".header__icons a[aria-label='Mi cuenta']").addEventListener("click", function(e) {
+  e.preventDefault();
+  abrirLogin();
+});
+
+// Cerrar con la X
+document.getElementById("btn-cerrar-login").addEventListener("click", cerrarLogin);
+
+// Cerrar al hacer clic fuera del modal
+loginModal.addEventListener("click", function(e) {
+  if (e.target === this) cerrarLogin();
+});
+
+// Cerrar con ESC
+document.addEventListener("keydown", function(e) {
+  if (e.key === "Escape") cerrarLogin();
+});
+
+function abrirLogin() {
+  loginModal.classList.add("open");
+}
+
+function cerrarLogin() {
+  loginModal.classList.remove("open");
+  document.getElementById("error-login-email").textContent = "";
+  document.getElementById("error-login-password").textContent = "";
+  document.getElementById("login-email").value = "";
+  document.getElementById("login-password").value = "";
+}
+
+// Validación y envío del login
+document.getElementById("btn-login").addEventListener("click", function() {
+  const email    = document.getElementById("login-email").value.trim();
+  const password = document.getElementById("login-password").value.trim();
+  let valido = true;
+
+  // Validar email
+  if (!email) {
+    document.getElementById("error-login-email").textContent = "El email es requerido";
+    valido = false;
+  } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
+    document.getElementById("error-login-email").textContent = "Formato inválido — ej: usuario@dominio.com";
+    valido = false;
+  } else {
+    document.getElementById("error-login-email").textContent = "";
+  }
+
+  // Validar contraseña
+  if (!password) {
+    document.getElementById("error-login-password").textContent = "La contraseña es requerida";
+    valido = false;
+  } else if (password.length < 6) {
+    document.getElementById("error-login-password").textContent = "Mínimo 6 caracteres";
+    valido = false;
+  } else {
+    document.getElementById("error-login-password").textContent = "";
+  }
+
+  if (!valido) return;
+
+  // Simulamos login exitoso
+  cerrarLogin();
+  mostrarToast("✓ Sesión iniciada correctamente");
+});
